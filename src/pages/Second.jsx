@@ -12,7 +12,7 @@ function Second() {
         const timeout = setTimeout(() => {
             axios
                 .get(
-                    `https://jsonplaceholder.typicode.com/photos?_page=${page}&_limit=5`
+                    `https://jsonplaceholder.typicode.com/photos?_page=${page}&_limit=10`
                 )
                 .then((response) => {
                     if (response.status === 200) {
@@ -20,16 +20,16 @@ function Second() {
                             ...prevPhotos,
                             ...response.data,
                         ]);
-                        setLoad(false); // Yuklanish tugadi
+                        setLoad(false); 
                     }
                 })
                 .catch((err) => {
                     console.log(err);
-                    setLoad(false); // Xatolikda ham yuklanishni tugatish
+                    setLoad(false); 
                 });
-        }, 1500); // 1.5 soniya kechikish
+        }, 1500);
 
-        return () => clearTimeout(timeout); // Tozalash
+        return () => clearTimeout(timeout);
     }, [page]);
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
